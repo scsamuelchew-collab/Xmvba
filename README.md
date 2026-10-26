@@ -52,7 +52,7 @@ After that you can add co-organisers from **Organiser → Settings**.
 
 ### Deploy
 
-Deploy this folder to Vercel (set the project root to `xinmin-volleyball`)
+Deploy to Vercel (import this repo; no root directory needed)
 with the three `NEXT_PUBLIC_*` environment variables.
 
 ## Future events
@@ -72,4 +72,4 @@ sport) and mark it `is_active`.
 | `npm run test:db` | Applies the migrations to a scratch database and asserts every rule and privacy policy (needs `psql` and a local Postgres via `PG*` env vars) |
 | `npm run test:e2e` | Builds the app and drives it in a phone-sized Chromium against the real migrations, through a small test-only stand-in for the Supabase API (`tests/e2e/fake-supabase.mjs`). Screenshots go to `tests/.artifacts/`. |
 
-CI runs all four (`.github/workflows/xinmin-volleyball.yml`).
+CI runs all four (`.github/workflows/ci.yml`).
