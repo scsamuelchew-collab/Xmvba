@@ -79,7 +79,7 @@ export async function signInWithEmail(_prev: ActionResult, fd: FormData): Promis
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
     email,
-    options: { emailRedirectTo: `${siteUrl()}/auth/callback?next=${encodeURIComponent(next)}` },
+    options: { emailRedirectTo: `${await siteUrl()}/auth/callback?next=${encodeURIComponent(next)}` },
   });
   if (error) return { error: error.message };
   return { ok: `Check ${email} — we've sent you a sign-in link. Open it on this phone.` };
@@ -90,7 +90,7 @@ export async function signInWithGoogle(_prev: ActionResult, fd: FormData): Promi
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: `${siteUrl()}/auth/callback?next=${encodeURIComponent(next)}` },
+    options: { redirectTo: `${await siteUrl()}/auth/callback?next=${encodeURIComponent(next)}` },
   });
   if (error || !data.url) return { error: error?.message ?? "Google sign-in is not available right now." };
   redirect(data.url);

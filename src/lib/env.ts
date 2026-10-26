@@ -10,6 +10,16 @@ export function supabaseAnonKey(): string {
   return v;
 }
 
-export function siteUrl(): string {
-  return (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+/**
+ * Public URL of the app: NEXT_PUBLIC_SITE_URL when set, otherwise the host
+ * the current request came in on (so a fresh deploy works without config).
+ */
+export async function siteUrl(): Promise<string> {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL;
+  if (configured) return configured.replace(/\/$/, "");
+  const { headers } = await import("next/headers");
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") || host.startsWith("127.") ? "http" : "https");
+  return `${proto}://${host}`;
 }

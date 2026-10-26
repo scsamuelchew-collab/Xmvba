@@ -127,7 +127,7 @@ export default async function TeamRoom({ params, searchParams }: PageProps<"/tea
           <Card>
             <p className="mb-2 text-sm font-semibold text-navy-900">Know someone who should play?</p>
             <ShareButtons
-              url={`${siteUrl()}/teams/${id}`}
+              url={`${await siteUrl()}/teams/${id}`}
               text={`${team.name} is recruiting for the ${event.name}! ${team.member_count}/${settings.max_roster} players.`}
             />
           </Card>

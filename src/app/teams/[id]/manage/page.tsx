@@ -62,7 +62,7 @@ export default async function ManageTeam({ params, searchParams }: PageProps<"/t
   const submit = canSubmit(team, settings);
   const full = team.member_count >= settings.max_roster;
   const locked = team.roster_locked;
-  const inviteUrl = code ? `${siteUrl()}/join/${code}` : null;
+  const inviteUrl = code ? `${await siteUrl()}/join/${code}` : null;
 
   const invitedIds = new Set(invitations.map((i) => i.player_id));
   const requestedIds = new Set(requests.map((r) => r.player_id));
