@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* Xinmin alumni volleyball identity: deep school navy + volleyball gold.
+   Change the palette here; components only use these tokens. */
+@theme {
+  --color-navy-950: #050f2b;
+  --color-navy-900: #0b1f4d;
+  --color-navy-800: #132c66;
+  --color-navy-700: #1d3d85;
+  --color-navy-100: #e3e9f7;
+  --color-navy-50: #f1f4fb;
+  --color-gold-500: #ffc20e;
+  --color-gold-400: #ffd23f;
+  --color-gold-100: #fff3c4;
+  --color-court-500: #e8562a;
+  --color-ink: #0f172a;
+  --color-muted: #5b6475;
+  --color-line: #e2e6ee;
+  --color-surface: #f6f7fb;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-display-face), "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-gold-500);
+    outline-offset: 2px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* stops iOS zooming into fields */
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+/* Diagonal court-line texture for hero panels. */
+@utility court-lines {
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent 0 22px,
+    rgb(255 255 255 / 0.04) 22px 24px
+  );
+}
