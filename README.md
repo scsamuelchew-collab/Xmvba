@@ -53,7 +53,7 @@ After that you can add co-organisers from **Organiser → Settings**.
 ### Deploy
 
 Deploy to Vercel (import this repo; no root directory needed)
-with the three `NEXT_PUBLIC_*` environment variables.
+with `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` set.
 
 ## Future events
 
